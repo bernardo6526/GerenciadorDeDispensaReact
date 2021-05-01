@@ -67,7 +67,7 @@ function App() {
         <div className="componentContent">
           <div className="componentHeader">
             <h1>Itens da Dispensa</h1>
-            <button id="addDispensa" className="button primary mvLeft3">
+            <button id="addDispensa" className="button primary mvLeft3" onClick={addDispensa}>
               <img src={plus1} />
             </button>
           </div>
@@ -96,7 +96,7 @@ function App() {
         <div class="componentContent">
           <div class="componentHeader">
             <h1 id="tituloCompra"></h1>
-            <button id="addProduto" class="button primary mvLeft3">
+            <button id="addProduto" class="button primary mvLeft3" onClick={addProduto}>
               <img src={plus1} />
             </button>
           </div>
@@ -169,33 +169,51 @@ function App() {
 export default App;
 
 window.onload = () => {
+  // carrega os recursos salvos
+  const lc = JSON.parse(localStorage.getItem('listasDeCompras'));
+  if (lc) listasDeCompras = lc;
+  const pc = JSON.parse(localStorage.getItem('produtosCompras'));
+  if (pc) produtosCompras = pc;
+  const di = JSON.parse(localStorage.getItem('dispensa'));
+  if (di) dispensa = di;
+
   // cria um objeto com as abas
   let tabs = document.querySelectorAll('.navBar .tab');
 
   const mostra = (elem) => {
-      if (elem) {
-          for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
-          elem.classList.add('active');
-      }
+    if (elem) {
+      for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+      elem.classList.add('active');
+    }
 
-      for (let i = 0; i < tabs.length; i++) {
-          let comp = tabs[i].getAttribute('for');
-          if (tabs[i].classList.contains('active'))
-              document.querySelector('#' + comp).classList.remove('hidden');
-          else document.querySelector('#' + comp).classList.add('hidden');
-      }
+    for (let i = 0; i < tabs.length; i++) {
+      let comp = tabs[i].getAttribute('for');
+      if (tabs[i].classList.contains('active'))
+        document.querySelector('#' + comp).classList.remove('hidden');
+      else document.querySelector('#' + comp).classList.add('hidden');
+    }
   };
 
   for (let i = 0; i < tabs.length; i++)
-      tabs[i].onclick = (e) => {
-          mostra(e.target);
-      };
+    tabs[i].onclick = (e) => {
+      mostra(e.target);
+    };
 
   mostra();
-   // carrega os vetores
+
+  // carrega os vetores
   mostraListasCompras();
   mostraProdutosCompra();
   mostraDispensa();
+
+  // NavBar ---------------------------------------------
+  document.querySelector('#tab1').onclick = () => {
+    ativa('tela1');
+  };
+  document.querySelector('#tab2').onclick = () => {
+    ativa('tela2');
+  };
+  // NavBar ---------------------------------------------
 }
 
 function ativa(comp) {
@@ -473,7 +491,7 @@ const mostraProdutosCompra = () => {
 
           // cria o botao de excluir do elemento
           let btnExcluir = document.createElement('BUTTON');
-          btnExcluir.innerHTML = '<img src="imagens\\delete.png" />';
+          btnExcluir.innerHTML = '<img src="https://i.imgur.com/7aqb9PH.png" />';
           btnExcluir.setAttribute('id', "btnExcluir" + i.id);
           btnExcluir.setAttribute('class', 'button primary');
           // limpa o checkArea e adiciona o botao de exclusao
@@ -546,7 +564,7 @@ const mostraProdutosCompra = () => {
 
           // cria o botao de excluir do elemento
           let btnExcluir = document.createElement('BUTTON');
-          btnExcluir.innerHTML = '<img src="imagens\\delete.png" />';
+          btnExcluir.innerHTML = '<img src="https://i.imgur.com/7aqb9PH.png" />';
           btnExcluir.setAttribute('id', "btnExcluir" + i.id);
           btnExcluir.setAttribute('class', 'button primary');
           // limpa o checkArea e adiciona o botao de exclusao
@@ -620,7 +638,7 @@ const mostraProdutosCompra = () => {
 
           // cria o botao de excluir do elemento
           let btnExcluir = document.createElement('BUTTON');
-          btnExcluir.innerHTML = '<img src="imagens\\delete.png" />';
+          btnExcluir.innerHTML = '<img src="https://i.imgur.com/7aqb9PH.png" />';
           btnExcluir.setAttribute('id', "btnExcluir" + i.id);
           btnExcluir.setAttribute('class', 'button primary');
           // limpa o checkArea e adiciona o botao de exclusao
@@ -727,7 +745,7 @@ const mostraDispensa = () => {
 
           // cria o botao de excluir do elemento
           let btnExcluir = document.createElement('BUTTON');
-          btnExcluir.innerHTML = '<img src="imagens\\delete.png" />';
+          btnExcluir.innerHTML = '<img src="https://i.imgur.com/7aqb9PH.png" />';
           btnExcluir.setAttribute('id', "btnExcluir" + i.id);
           btnExcluir.setAttribute('class', 'button primary');
           // limpa o checkArea e adiciona o botao de exclusao
@@ -801,7 +819,7 @@ const mostraDispensa = () => {
 
           // cria o botao de excluir do elemento
           let btnExcluir = document.createElement('BUTTON');
-          btnExcluir.innerHTML = '<img src="imagens\\delete.png" />';
+          btnExcluir.innerHTML = '<img src="https://i.imgur.com/7aqb9PH.png" />';
           btnExcluir.setAttribute('id', "btnExcluir" + i.id);
           btnExcluir.setAttribute('class', 'button primary');
           // limpa o checkArea e adiciona o botao de exclusao
@@ -877,7 +895,7 @@ const mostraDispensa = () => {
 
           // cria o botao de excluir do elemento
           let btnExcluir = document.createElement('BUTTON');
-          btnExcluir.innerHTML = '<img src="imagens\\delete.png" />';
+          btnExcluir.innerHTML = '<img src="https://i.imgur.com/7aqb9PH.png" />';
           btnExcluir.setAttribute('id', "btnExcluir" + i.id);
           btnExcluir.setAttribute('class', 'button primary');
           // limpa o checkArea e adiciona o botao de exclusao
@@ -956,7 +974,7 @@ const mostraDispensa = () => {
 
           // cria o botao de excluir do elemento
           let btnExcluir = document.createElement('BUTTON');
-          btnExcluir.innerHTML = '<img src="imagens\\delete.png" />';
+          btnExcluir.innerHTML = '<img src="https://i.imgur.com/7aqb9PH.png" />';
           btnExcluir.setAttribute('id', "btnExcluir" + i.id);
           btnExcluir.setAttribute('class', 'button primary');
           // limpa um campo e adiciona o botao de exclusao
@@ -1051,7 +1069,7 @@ const convertDate = (date) => {
 
 navigator.serviceWorker.register('./dispensa-sw.js');
 
-function addCompra(comp) {
+function addCompra() {
   ativa('formulario');
   // foca no campo
   document.querySelector('#nome').focus();
@@ -1116,5 +1134,219 @@ function addCompra(comp) {
     // mostra a barra de navegacao
     nav.visibility = 'visible';
   };
-}
+} // fim addCompra
 
+function addProduto(){
+  // ativa a tela de formulario
+  ativa('formulario');
+
+  // foca no campo
+  document.querySelector('#nome').focus();
+
+  // esconde a barra de navegacao
+  let nav = document.getElementById('nav').style;
+  nav.visibility = 'hidden';
+
+  // muda o titulo do formulario
+  let lblNome = document.querySelector('#lblNome');
+  lblNome.innerHTML = 'Adicionar Produto';
+
+  // muda o nome do item do formulario
+  let lblItem = document.querySelector('#lblItem');
+  lblItem.innerHTML = 'Nome do Item:';
+
+  // esconde campos desnecessarios
+  desabilitaCampos();
+
+  // habilita campos necessarios
+  habilitaCampo('divQtd');
+  habilitaCampo('divUnidade');
+
+  // evento de inclusao
+  document.querySelector('#btnInc').onclick = () => {
+    // cria os objetos correspondentes aos campos do formulario
+    let inputNome = document.getElementById('nome');
+    let inputQtd = document.getElementById('qtd');
+    let inputUnidade = document.getElementById('unidade');
+
+    // torna vermelho o campo com o valor faltando 
+    //ou remove o vermelho do campo com valor preenchido
+    if (inputNome.value == '') inputNome.style.borderColor = '#f00';
+    else inputNome.style.borderColor = '#8f9799';
+
+    if (inputQtd.value == '') inputQtd.style.borderColor = '#f00';
+    else inputQtd.style.borderColor = '#8f9799';
+
+    if (inputUnidade.value == '') inputUnidade.style.borderColor = '#f00';
+    else inputUnidade.style.borderColor = '#8f9799';
+
+    // se os campos nao estiverem vazios
+    if (inputNome.value != '' && inputQtd.value != '' && inputUnidade.value != '') {
+      // insere o elemento
+      produtosCompras.push({
+        idLista: idLista,
+        id: Math.random().toString().replace('0.', ''),
+        nome: inputNome.value,
+        qtd: inputQtd.value,
+        unidade: inputUnidade.value
+      });
+      // atualiza a lista
+      mostraProdutosCompra();
+      // salva localmente
+      localStorage.setItem('produtosCompras', JSON.stringify(produtosCompras));
+
+      // limpa o valor dos campos
+      inputNome.value = '';
+      inputQtd.value = '';
+      inputUnidade.value = '';
+
+      // volta a cor dos fields para o normal
+      inputNome.style.borderColor = '#8f9799';
+      inputQtd.style.borderColor = '#8f9799';
+      inputUnidade.style.borderColor = '#8f9799';
+
+      // volta para tela anterior         
+      ativa('tela3');
+
+      // mostra a barra de navegacao
+      nav.visibility = 'visible';
+    }
+  };
+
+  // evento de cancelar
+  document.querySelector('#btnCanc').onclick = () => {
+    let inputNome = document.getElementById('nome');
+    let inputQtd = document.getElementById('qtd');
+    let inputUnidade = document.getElementById('unidade');
+
+    // limpa o valor dos campos
+    inputNome.value = '';
+    inputQtd.value = '';
+    inputUnidade.value = '';
+
+    // volta a cor dos fields para o normal
+    inputNome.style.borderColor = '#8f9799';
+    inputQtd.style.borderColor = '#8f9799';
+    inputUnidade.style.borderColor = '#8f9799';
+
+    // volta para tela anterior         
+    ativa('tela3');
+
+    // mostra a barra de navegacao
+    nav.visibility = 'visible';
+  };
+} // fim addProduto
+
+function addDispensa(){
+  // ativa a tela de formulario
+  ativa('formulario');
+
+  // foca no campo
+  document.querySelector('#nome').focus();
+
+  // esconde a barra de navegacao
+  let nav = document.getElementById('nav').style;
+  nav.visibility = 'hidden';
+
+  // muda o titulo do formulario
+  let lblNome = document.querySelector('#lblNome');
+  lblNome.innerHTML = 'Adicionar na Dispensa';
+
+  // muda o nome do item do formulario
+  let lblItem = document.querySelector('#lblItem');
+  lblItem.innerHTML = 'Nome do Item:';
+
+  // esconde campos desnecessarios
+  desabilitaCampos();
+
+  // habilita campos necessarios
+  habilitaCampo('divQtd');
+  habilitaCampo('divUnidade');
+  habilitaCampo('divValidade');
+
+
+  // evento de inclusao
+  document.querySelector('#btnInc').onclick = () => {
+    // cria os objetos correspondentes aos campos do formulario
+    let inputNome = document.getElementById('nome');
+    let inputQtd = document.getElementById('qtd');
+    let inputUnidade = document.getElementById('unidade');
+    let inputValidade = document.getElementById('validade');
+
+    // torna vermelho o campo com o valor faltando 
+    //ou remove o vermelho do campo com valor preenchido
+    if (inputNome.value == '') inputNome.style.borderColor = '#f00';
+    else inputNome.style.borderColor = '#8f9799';
+
+    if (inputQtd.value == '') inputQtd.style.borderColor = '#f00';
+    else inputQtd.style.borderColor = '#8f9799';
+
+    if (inputUnidade.value == '') inputUnidade.style.borderColor = '#f00';
+    else inputUnidade.style.borderColor = '#8f9799';
+
+    if (inputValidade.value == '') inputValidade.style.borderColor = '#f00';
+    else inputValidade.style.borderColor = '#8f9799';
+
+    // se os campos nao estiverem vazios
+    if (inputNome.value != '' && inputQtd.value != ''
+      && inputUnidade.value != '' && inputValidade.value != '') {
+      // insere o elemento
+      dispensa.push({
+        idLista: idLista,
+        id: Math.random().toString().replace('0.', ''),
+        nome: inputNome.value,
+        qtd: inputQtd.value,
+        unidade: inputUnidade.value,
+        validade: inputValidade.value
+      });
+      // atualiza a lista
+      mostraDispensa();
+      // salva localmente
+      localStorage.setItem('dispensa', JSON.stringify(dispensa));
+
+      // limpa o valor dos campos
+      inputNome.value = '';
+      inputQtd.value = '';
+      inputUnidade.value = '';
+      inputValidade.value = '';
+
+      // volta a cor dos fields para o normal
+      inputNome.style.borderColor = '#8f9799';
+      inputQtd.style.borderColor = '#8f9799';
+      inputUnidade.style.borderColor = '#8f9799';
+      inputValidade.style.borderColor = '#8f9799';
+
+      // volta para tela anterior         
+      ativa('tela2');
+
+      // mostra a barra de navegacao
+      nav.visibility = 'visible';
+    }
+  };
+
+  // evento de cancelar
+  document.querySelector('#btnCanc').onclick = () => {
+    let inputNome = document.getElementById('nome');
+    let inputQtd = document.getElementById('qtd');
+    let inputUnidade = document.getElementById('unidade');
+    let inputValidade = document.getElementById('validade');
+
+    // limpa o valor dos campos
+    inputNome.value = '';
+    inputQtd.value = '';
+    inputUnidade.value = '';
+    inputValidade.value = '';
+
+    // volta a cor dos fields para o normal
+    inputNome.style.borderColor = '#8f9799';
+    inputQtd.style.borderColor = '#8f9799';
+    inputUnidade.style.borderColor = '#8f9799';
+    inputValidade.style.borderColor = '#8f9799';
+
+    // volta para tela anterior         
+    ativa('tela2');
+
+    // mostra a barra de navegacao
+    nav.visibility = 'visible';
+  };
+} // fim addDispensa
