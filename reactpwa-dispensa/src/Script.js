@@ -14,7 +14,7 @@ console.log("podeEditar:" + podeEditar);
 
 function Script() {
     return (
-        <div className="Script">{
+      <React.Fragment>{
 
 
             window.onload = () => {
@@ -41,6 +41,10 @@ function Script() {
                     };
 
                 mostra();
+                 // carrega os vetores
+                mostraListasCompras();
+                mostraProdutosCompra();
+                mostraDispensa();
             }
 
         }
@@ -48,7 +52,7 @@ function Script() {
 
 
 
-            }</div>
+            }</React.Fragment>
 
 
 

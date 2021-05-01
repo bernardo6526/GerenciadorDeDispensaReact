@@ -12,19 +12,6 @@ import cookiejar72 from './imagens/icones/cookiejar72.png';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Script />
-    <header className="headerBar dark">
-      <div className="cookieImg"><img src={cookiejar72} alt="logo" /></div>
-      <div className="appName left">Gerenciador de Dispensa</div>
-    </header>
-    <nav id="nav" className="navBar bottom">
-      <div className="buttonGroup">
-        <button id="tab2" className="button tab active" htmlFor="tela2">Dispensa</button>
-        <button id="tab1" className="button tab" htmlFor="tela1">
-          Listas de Compras
-            </button>
-      </div>
-    </nav>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
