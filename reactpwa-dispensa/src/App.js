@@ -4,22 +4,6 @@ import './App.css';
 import plus1 from './imagens/plus1.png';
 import cookiejar72 from './imagens/icones/cookiejar72.png';
 
-
-/*
-import listasDeCompras from './Script.js';
-import produtosCompras from './Script.js';
-import idLista from './Script.js';
-import dispensa from './Script.js';
-import podeEditar from './Script.js';
-import ativa from './Script.js';
-import mostraListasCompras from './Script.js';
-import alterarListaCompras from './Script.js';
-import mostraProdutosCompra from './Script.js';
-import mostraDispensa from './Script.js';
-import desabilitaCampos from './Script.js';
-import habilitaCampo from './Script.js';
-import convertDate from './Script.js'; */
-
 let listasDeCompras = [];
 
 let produtosCompras = [];
