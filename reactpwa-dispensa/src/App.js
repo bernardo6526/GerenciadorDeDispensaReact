@@ -3,8 +3,9 @@ import './App.css';
 
 import plus1 from './imagens/plus1.png';
 import cookiejar72 from './imagens/icones/cookiejar72.png';
+import lupa from './imagens/magnifying_glass.png';
 
-import Dispensa from './Dispensa.jsx'
+import Dispensa from './Dispensa.jsx';
 
 let listasDeCompras = [];
 
@@ -24,7 +25,7 @@ function App() {
     <div className="App">
 
       <header className="headerBar dark">
-        <div className="cookieImg"><img src={cookiejar72} alt="logo" /></div>
+        <div className="cookieImg"><img src={cookiejar72} alt="cookiejar" /></div>
         <div className="appName left">Gerenciador de Dispensa</div>
       </header>
       <nav id="nav" className="navBar bottom">
@@ -61,20 +62,46 @@ function App() {
             <table className="table">
               <tr>
                 <th>Item</th>
+                <th>
+                  <button className="button primary tiny" onClick={mostraQuantidade}>
+                    Qtd <img src={lupa} />
+                  </button>
+                </th>
+                <th>Unidade</th>
+                <th>
+                  <button className="button primary tiny" onClick={mostraValidade}>
+                    Val <img src={lupa} />
+                  </button>
+                </th>
+              </tr>
+            </table>
+          </div>
+          <table id="dispensa" className="table mt8">
+          </table>
+        </div>
+      </div>
+
+      <div id="telaValidade" className="component hidden">
+        <div className="componentContent">
+          <Dispensa />
+        </div>
+      </div>
+
+      <div id="telaQuantidade" className="component hidden">
+        <div className="componentContent">
+          <div className="componentHeader">
+            <h1>Itens que estão acabando</h1>
+          </div>
+          <div className="tableHeader">
+            <table className="table">
+              <tr>
+                <th>Item</th>
                 <th>Qtd</th>
                 <th>Unidade</th>
                 <th>Validade</th>
               </tr>
             </table>
           </div>
-          <table id="dispensa" className="table mt6">
-            <tr>
-              <td>Torta de mousse de limão</td>
-              <td>12</td>
-              <td>unidade</td>
-              <td>11/04/2021</td>
-            </tr>
-          </table>
           <Dispensa />
         </div>
       </div>
@@ -1336,3 +1363,11 @@ function addDispensa() {
     nav.visibility = 'visible';
   };
 } // fim addDispensa
+
+function mostraValidade() {
+  ativa('telaValidade');
+}
+
+function mostraQuantidade() {
+  ativa('telaQuantidade');
+}

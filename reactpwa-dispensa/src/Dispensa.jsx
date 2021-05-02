@@ -1,30 +1,64 @@
 import React, { Component } from "react";
 
+import refresh from './imagens/refresh.png';
 
 class Dispensa extends Component {
     state = {
         dispensa: []
     };
 
+
     constructor(props) {
         super(props);
-        const t = JSON.parse(localStorage.getItem('dispensa'));
+        let t = JSON.parse(localStorage.getItem('dispensa'));
+        t = this.ordenarValidade(t);
         if (t) this.state.dispensa = t;
-        console.log(this.state.dispensa);
     }
 
     render() {
         return (
-
-            <table className="table mt3">
-                {this.mostraVencedores()}
-            </table>
+            <React.Fragment>
+                <div className="componentHeader">
+                    <h1>Itens que estão para vencer</h1>
+                    <button className="button primary mvLeft3" onClick={this.dispensaUpdate}>
+                        <img src={refresh} />
+                    </button>
+                </div>
+                <div className="tableHeader">
+                    <table className="table">
+                        <tr>
+                            <th>Item</th>
+                            <th>Qtd</th>
+                            <th>Unidade</th>
+                            <th>Validade</th>
+                        </tr>
+                    </table>
+                </div>
+                <table className="table mt6">
+                    {this.mostraVencedores()}
+                </table>
+            </React.Fragment>
         );
     }
 
-    componentDidUpdate() {
-        localStorage.setItem('dispensa', JSON.stringify(this.state.dispensa));
-    }
+    dispensaUpdate = () => {
+        let t = JSON.parse(localStorage.getItem('dispensa'));
+        t = this.ordenarValidade(t);
+        this.setState({
+            dispensa: t,
+        });
+    };
+
+    ordenarValidade = (t) => {
+        let new_t = [...t];
+        new_t.sort(function (a, b) {
+            // Turn your strings into dates, and then subtract them
+            // to get a value that is either negative, positive, or zero.
+            return new Date(a.validade) - new Date(b.validade);
+        });
+
+        return new_t;
+    };
 
     mostraVencedores() {
         return (
@@ -46,7 +80,8 @@ class Dispensa extends Component {
         let dateSplit = date.split('-');
         let newdate = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0].slice(2, 4);
         return newdate;
-    }
+    };
 }
 
 export default Dispensa;
+
