@@ -4,16 +4,18 @@ import './App.css';
 import plus1 from './imagens/plus1.png';
 import cookiejar72 from './imagens/icones/cookiejar72.png';
 
+import Dispensa from './Dispensa.jsx'
+
 let listasDeCompras = [];
 
 let produtosCompras = [];
 
-let idLista = -1;
+export let idLista = -1;
 
-let dispensa = [];
+export let dispensa = [];
 
 // flag para controlar as edicoes
-let podeEditar = true;
+export let podeEditar = true;
 console.log("podeEditar:" + podeEditar);
 
 
@@ -21,18 +23,18 @@ function App() {
   return (
     <div className="App">
 
-<header className="headerBar dark">
-      <div className="cookieImg"><img src={cookiejar72} alt="logo" /></div>
-      <div className="appName left">Gerenciador de Dispensa</div>
-    </header>
-    <nav id="nav" className="navBar bottom">
-      <div className="buttonGroup">
-        <button id="tab2" className="button tab active" htmlFor="tela2">Dispensa</button>
-        <button id="tab1" className="button tab" htmlFor="tela1">
-          Listas de Compras
+      <header className="headerBar dark">
+        <div className="cookieImg"><img src={cookiejar72} alt="logo" /></div>
+        <div className="appName left">Gerenciador de Dispensa</div>
+      </header>
+      <nav id="nav" className="navBar bottom">
+        <div className="buttonGroup">
+          <button id="tab2" className="button tab active" htmlFor="tela2">Dispensa</button>
+          <button id="tab1" className="button tab" htmlFor="tela1">
+            Listas de Compras
             </button>
-      </div>
-    </nav>
+        </div>
+      </nav>
 
       <div id="tela1" className="component hidden">
         <div className="componentContent">
@@ -73,19 +75,20 @@ function App() {
               <td>11/04/2021</td>
             </tr>
           </table>
+          <Dispensa />
         </div>
       </div>
 
-      <div id="tela3" class="component hidden">
-        <div class="componentContent">
-          <div class="componentHeader">
+      <div id="tela3" className="component hidden">
+        <div className="componentContent">
+          <div className="componentHeader">
             <h1 id="tituloCompra"></h1>
-            <button id="addProduto" class="button primary mvLeft3" onClick={addProduto}>
+            <button id="addProduto" className="button primary mvLeft3" onClick={addProduto}>
               <img src={plus1} />
             </button>
           </div>
-          <div class="tableHeader">
-            <table class="table">
+          <div className="tableHeader">
+            <table className="table">
               <tr>
                 <th>Item</th>
                 <th>Qtd</th>
@@ -94,52 +97,53 @@ function App() {
               </tr>
             </table>
           </div>
-          <table id="produtosCompra" class="table mt6">
+          <table id="produtosCompra" className="table mt6">
           </table>
-          <div class="buttonGroup">
-            <button id="enviarCompra" class="button primary">
+          <div className="buttonGroup">
+            <button id="enviarCompra" className="button primary">
               Enviar para dispensa
             </button>
           </div>
+
         </div>
       </div>
 
-      <div id="formulario" class="component hidden">
-        <div class="componentHeader">
-          <h1 class="componentTitle mvLeft2" id="lblNome"></h1>
+      <div id="formulario" className="component hidden">
+        <div className="componentHeader">
+          <h1 className="componentTitle mvLeft2" id="lblNome"></h1>
         </div>
-        <div class="componentContent">
-          <div class="field" id="divItem">
-            <label class="fixed" id="lblItem" for="inputNovaTarefa"></label>
-            <input id="nome" type="text" autocomplete="off"/>
+        <div className="componentContent">
+          <div className="field" id="divItem">
+            <label className="fixed" id="lblItem" htmlFor="inputNovaTarefa"></label>
+            <input id="nome" type="text" autoComplete="off" />
           </div>
-          <div class="field" id="divQtd">
-            <label class="fixed" for="inputNovaTarefa">Qtd:</label>
-            <input type="number" id="qtd" min="0" max="1000"/>
+          <div className="field" id="divQtd">
+            <label className="fixed" htmlFor="inputNovaTarefa">Qtd:</label>
+            <input type="number" id="qtd" min="0" max="1000" />
           </div>
-          <div class="field" id="divUnidade">
-            <label class="fixed" for="inputNovaTarefa">Unidade:</label>
-            <input id="unidade" type="text" autocomplete="off"/>
+          <div className="field" id="divUnidade">
+            <label className="fixed" htmlFor="inputNovaTarefa">Unidade:</label>
+            <input id="unidade" type="text" autoComplete="off" />
           </div>
-          <div class="field" id="divValidade">
-            <label class="fixed" for="inputNovaTarefa">Validade:</label>
-            <input type="date" id="validade"/>
+          <div className="field" id="divValidade">
+            <label className="fixed" htmlFor="inputNovaTarefa">Validade:</label>
+            <input type="date" id="validade" />
           </div>
-          <div class="buttonGroup mt1 center">
-            <button id="btnCanc" class="button quarter light">Cancelar</button>
-            <button id="btnInc" class="button quarter primary">Incluir</button>
+          <div className="buttonGroup mt1 center">
+            <button id="btnCanc" className="button quarter light">Cancelar</button>
+            <button id="btnInc" className="button quarter primary">Incluir</button>
           </div>
         </div>
       </div>
 
-      <div id="telaExclusao" class="component hidden">
-        <div class="componentHeader">
-          <h1 class="componentTitle mvLeft2" id="telaExclusao">Realmente deseja excluir?</h1>
+      <div id="telaExclusao" className="component hidden">
+        <div className="componentHeader">
+          <h1 className="componentTitle mvLeft2" id="telaExclusao">Realmente deseja excluir?</h1>
         </div>
-        <div class="componentContent">
-          <div class="buttonGroup mt1 center">
-            <button id="btnNao" class="button quarter light">Não</button>
-            <button id="btnSim" class="button quarter primary">Sim</button>
+        <div className="componentContent">
+          <div className="buttonGroup mt1 center">
+            <button id="btnNao" className="button quarter light">Não</button>
+            <button id="btnSim" className="button quarter primary">Sim</button>
           </div>
         </div>
       </div>
@@ -200,7 +204,7 @@ window.onload = () => {
   // NavBar ---------------------------------------------
 }
 
-function ativa(comp) {
+export function ativa(comp) {
   let listaDeTelas = document.querySelectorAll('.component');
   listaDeTelas.forEach((c) => c.classList.add('hidden'));
   document.querySelector('#' + comp).classList.remove('hidden');
@@ -361,10 +365,10 @@ const alterarListaCompras = (lista) => {
 const mostraProdutosCompra = () => {
   // cria um vetor de produtos da compra especifica
   let produtos = produtosCompras.filter((obj) => obj.idLista == idLista);
-  
+
   let enviarCompra = document.getElementById('enviarCompra');
   // se nao houver produtos
-  if (produtos.length == 0) {      
+  if (produtos.length == 0) {
     // esconde o botao de enviar para dispensa
     enviarCompra.classList.add("hidden");
   } else {
@@ -675,7 +679,7 @@ const mostraProdutosCompra = () => {
   }); // fim do for
 }; // fim do mostraProdutosCompra
 
-const mostraDispensa = () => {
+export const mostraDispensa = () => {
   // pega o conteudo que sera preenchido
   const di = document.querySelector('#dispensa');
   di.innerHTML = '';
@@ -1044,14 +1048,12 @@ const habilitaCampo = (idCampo) => {
   elemento.visibility = 'visible'; elemento.position = 'relative';
 }
 
-const convertDate = (date) => {
+export const convertDate = (date) => {
   //date = 'yyyy-mm-dd';
   let dateSplit = date.split('-');
   let newdate = dateSplit[2] + "/" + dateSplit[1] + "/" + dateSplit[0].slice(2, 4);
   return newdate;
 }
-
-navigator.serviceWorker.register('./dispensa-sw.js');
 
 function addCompra() {
   ativa('formulario');
@@ -1120,7 +1122,7 @@ function addCompra() {
   };
 } // fim addCompra
 
-function addProduto(){
+function addProduto() {
   // ativa a tela de formulario
   ativa('formulario');
 
@@ -1221,7 +1223,7 @@ function addProduto(){
   };
 } // fim addProduto
 
-function addDispensa(){
+function addDispensa() {
   // ativa a tela de formulario
   ativa('formulario');
 
