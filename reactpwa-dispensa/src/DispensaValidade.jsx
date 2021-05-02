@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import refresh from './imagens/refresh.png';
 
-class Dispensa extends Component {
+class DispensaValidade extends Component {
     state = {
         dispensa: []
     };
@@ -19,7 +19,7 @@ class Dispensa extends Component {
         return (
             <React.Fragment>
                 <div className="componentHeader">
-                    <h1>Itens que estão para vencer</h1>
+                    <h1>Controle de Validade</h1>
                     <button className="button primary mvLeft3" onClick={this.dispensaUpdate}>
                         <img src={refresh} />
                     </button>
@@ -83,5 +83,5 @@ class Dispensa extends Component {
     };
 }
 
-export default Dispensa;
+export default DispensaValidade;
 

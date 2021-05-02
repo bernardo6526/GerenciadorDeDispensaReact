@@ -5,7 +5,8 @@ import plus1 from './imagens/plus1.png';
 import cookiejar72 from './imagens/icones/cookiejar72.png';
 import lupa from './imagens/magnifying_glass.png';
 
-import Dispensa from './Dispensa.jsx';
+import DispensaValidade from './DispensaValidade.jsx';
+import DispensaQuantidade from './DispensaQuantidade.jsx';
 
 let listasDeCompras = [];
 
@@ -83,26 +84,13 @@ function App() {
 
       <div id="telaValidade" className="component hidden">
         <div className="componentContent">
-          <Dispensa />
+          <DispensaValidade />
         </div>
       </div>
 
       <div id="telaQuantidade" className="component hidden">
         <div className="componentContent">
-          <div className="componentHeader">
-            <h1>Itens que estão acabando</h1>
-          </div>
-          <div className="tableHeader">
-            <table className="table">
-              <tr>
-                <th>Item</th>
-                <th>Qtd</th>
-                <th>Unidade</th>
-                <th>Validade</th>
-              </tr>
-            </table>
-          </div>
-          <Dispensa />
+          <DispensaQuantidade />
         </div>
       </div>
 
