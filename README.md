@@ -92,7 +92,7 @@ R: Sim
 
 ### A aplicação possui um service worker que permite o funcionamento off-line?
 
-R: Sim
+R: A aplicação possui o service worker mas não foi possível rodar a versão de produção do app pelo Repl.it. Portanto o funcionamento offline não é visível.
 
 ### O código da minha aplicação possui comentários explicando cada operação?
 
