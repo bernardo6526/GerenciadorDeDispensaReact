@@ -14,7 +14,7 @@ O gerenciador de dispensa permite adicionar uma lista de itens da sua dispensa a
   
 
 # Descrição de cada tela
-A seguir tem a explicação de cada tela e o seu none dentro do código delimitado por ('').
+A seguir tem a explicação de cada tela e o seu nome dentro do código delimitado por ('').
 
   
 ## Dispensa ('tela2')
