@@ -50,7 +50,8 @@ class DispensaQuantidade extends Component {
     };
 
     ordenarQuantidade = (t) => {
-        let new_t = [...t];
+        let new_t = [];
+        if(t != null) new_t = t;
         new_t.sort(function (a, b) {
             // Turn your strings into dates, and then subtract them
             // to get a value that is either negative, positive, or zero.

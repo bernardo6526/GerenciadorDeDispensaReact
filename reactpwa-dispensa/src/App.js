@@ -228,6 +228,7 @@ export function ativa(comp) {
 
 const mostraListasCompras = () => {
   const lc = document.querySelector('#listaCompras');
+  if(lc != null)
   lc.innerHTML = '';
   listasDeCompras.forEach((i) => {
     // cria o elemento da lista
