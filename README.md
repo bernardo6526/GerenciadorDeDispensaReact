@@ -22,6 +22,7 @@ A seguir tem a explicação de cada tela e o seu none dentro do código delimita
 Nessa página é possível visualizar os produtos da dispensa. Você pode adicionar um novo produto no botão +, alterar qualquer campo do produto clicando em cima dele, ou excluir clicando no ícone da lixeira após clicar em um atributo qualquer do produto que deseja excluir.
 
 Além disso, clicando no cabeçalho validade ou no de quantidade, é possível ver os itens que estão para vencer ou para acabar.
+
 ![enter image description here](https://i.imgur.com/6FcwyLS.png) ![enter image description here](https://i.imgur.com/W6WdC11.png)
 
 
